@@ -30,6 +30,7 @@ class TestBoundingBox extends FunSuite {
     }
   }
 
+  // since we know the correct size of the object, just compare a string containing the correct object to a string econtaing the output object
   def testTreeScale(description: String, s: Shape, factor: Int, GShape: String) = {
     test(description) {
       val NShape = treeScale(factor, s)
@@ -61,17 +62,9 @@ class TestBoundingBox extends FunSuite {
 
   testTreeScale("simple ellipse4", simpleEllipse, 2, "Location(-100,-60,Rectangle(200,120))")
   testTreeScale("simple Rectangle4", simpleRectangle, 2, "Location(0,0,Rectangle(160,240))")
-  testTreeScale("simple Location4", simpleRectangle, 2, "Location(0,0,Rectangle(160,240))")
+  testTreeScale("simple Location4", simpleLocation, 2, "Location(140,60,Location(0,0,Rectangle(160,240)))")
   testTreeScale("basic group4", basicGroup, 2, "Group(ArrayBuffer(Location(-100,-60,Rectangle(200,120)), Location(0,0,Rectangle(40,80))))")
   testTreeScale("simple group4", simpleGroup, 2, "Group(ArrayBuffer(Location(400,200,Location(-100,-60,Rectangle(200,120))), Location(800,600,Location(0,0,Rectangle(200,100)))))")
   testTreeScale("complex group4", complexGroup, 2, "Location(100,200,Group(ArrayBuffer(Location(-40,-80,Rectangle(80,160)), Location(300,100,Group(ArrayBuffer(Location(0,0,Rectangle(100,60)), Location(0,0,Rectangle(600,120)), Location(200,400,Location(-100,-60,Rectangle(200,120)))))), Location(0,0,Rectangle(200,400)))))")
-
-  println(treeScale(2, simpleEllipse))
-  println(treeScale(2, simpleRectangle))
-  println(treeScale(2, simpleLocation))
-  println(treeScale(2, basicGroup))
-  println(treeScale(2, simpleGroup))
-
-  println(treeScale(2, complexGroup))
 
 }
