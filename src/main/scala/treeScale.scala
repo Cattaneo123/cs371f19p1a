@@ -2,6 +2,9 @@ package edu.luc.cs.laufer.cs372.shapes
 
 // TODO: implement this behavior
 
+//Returns bounding boxes for objects as the scaled up version.
+
+
 object treeScale {
   def apply(scale: Int, s: Shape): Shape = s match {
     case Rectangle(w: Int, h: Int)              => Location(0, 0, Rectangle(scale * w, scale * h))
